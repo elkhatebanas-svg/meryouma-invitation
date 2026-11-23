@@ -1,0 +1,416 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#f3ecd9">
+<title>A Little Invitation — Khawlova</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;1,500;1,600&display=swap" rel="stylesheet">
+  
+ <style>
+:root{
+ --paper:#f5eedc;--paper2:#fbf5e6;--ink:#35454a;--muted:#7d8278;
+ --red:#a44956;--red2:#8f3e4c;--line:#46575b;--softline:#cfc7b3;
+}
+*{box-sizing:border-box}
+html,body{margin:0;min-height:100%;font-family:"DM Sans",sans-serif;color:var(--ink)}
+body{
+ min-height:100svh;display:flex;justify-content:center;align-items:center;padding:25px 12px;
+ background:
+  radial-gradient(ellipse at 22% 17%,#fff8 0,transparent 37%),
+  radial-gradient(ellipse at 80% 83%,#cfc5ad55 0,transparent 42%),
+  repeating-linear-gradient(0deg,#8d80600c 0,#8d80600c 1px,transparent 1px,transparent 4px),
+  linear-gradient(135deg,#eee7d4,#f6f0e1 48%,#e9e1ce);
+ overflow-x:hidden;
+}
+body:before{content:"";position:fixed;inset:0;pointer-events:none;opacity:.2;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.18'/%3E%3C/svg%3E")}
+.shell{width:min(100%,366px);position:relative}
+.theme-pill{
+ position:absolute;right:0;top:-33px;border:1px solid #aeb2aa;border-radius:20px;
+ padding:5px 12px;font-size:9px;letter-spacing:1.5px;color:#56666b;background:#f5eedcaa;
+}
+.book{position:relative;min-height:616px;perspective:1200px}
+.panel{
+ position:absolute;inset:0;min-height:616px;padding:23px 22px 17px;
+ background:var(--paper);border:1.7px solid var(--line);border-radius:8px;
+ outline:1px solid #53626766;outline-offset:-7px;
+ box-shadow:0 2px 0 #fff9 inset,0 13px 25px #4e49351c;
+ backface-visibility:hidden;display:flex;flex-direction:column;align-items:center;text-align:center;
+}
+.panel:after{content:"";position:absolute;inset:7px;border:1px solid #a8a28f;border-radius:5px;pointer-events:none}
+.front{z-index:2;transition:transform .82s cubic-bezier(.2,.75,.2,1),opacity .4s}
+.back{transform:rotateY(180deg);transition:transform .82s cubic-bezier(.2,.75,.2,1);padding-top:25px}
+.book.flipped .front{transform:rotateY(-180deg);opacity:0;pointer-events:none}
+.book.flipped .back{transform:rotateY(0deg)}
+.micro{font-size:9px;font-weight:700;letter-spacing:2.7px;color:#68777a;margin:3px 0 0;position:relative;z-index:1}
+.micro .star{color:var(--red);font-size:12px;padding:0 9px}
+.arch{
+ position:relative;width:100%;height:181px;flex:none;margin:22px 0 20px;
+ border:2px solid var(--line);border-radius:180px 180px 8px 8px / 145px 145px 8px 8px;
+ background:linear-gradient(180deg,#f8f1df,#f4ecd9);
+ box-shadow:inset 0 0 0 5px #f7f0df,inset 0 0 0 6px #b9b4a2;
+ overflow:hidden;
+}
+.arch:before,.arch:after{
+ content:"";position:absolute;left:9px;right:9px;top:8px;bottom:7px;
+ border:1px solid #d8d0bd;border-radius:160px 160px 5px 5px / 135px 135px 5px 5px;
+}
+.arch:after{left:20px;right:20px;top:15px;bottom:7px;border-color:#e1d9c7}
+.heart{
+ position:absolute;left:50%;top:36px;transform:translateX(-50%) rotate(-5deg);
+ color:var(--red);font:104px/1 Georgia,serif;text-shadow:3px 3px 0 #34464b;
+ z-index:2;animation:heartBeat 3s ease-in-out infinite;
+}
+.doodle{position:absolute;z-index:3;color:#77878a;font-family:Georgia,serif}
+.d1{left:17%;top:45%;font-size:24px}.d2{right:17%;top:28%;font-size:17px}.d3{right:20%;bottom:18%;font-size:13px}
+.greeting{font-size:10px;letter-spacing:2.2px;font-weight:700;color:var(--red);margin:0 0 13px;z-index:1}
+h1{font:600 clamp(32px,9vw,39px)/1.12 "Playfair Display",serif;color:#34464b;margin:0;z-index:1;letter-spacing:-1px}
+h2{font:italic 600 34px/1.1 "Playfair Display",serif;color:var(--red);margin:0 0 14px;z-index:1}
+.promise{font-size:11px;color:#7d8278;margin:0 0 9px;z-index:1}
+.make{font:italic 600 13px "Playfair Display",serif;color:var(--red);text-decoration:underline;text-underline-offset:4px;z-index:1}
+.make:before{content:"✦ ";font-size:9px}
+.cutline{position:relative;width:calc(100% + 44px);border-top:2px dashed #bcb5a4;margin:49px -22px 30px;flex:none}
+.cutline:before,.cutline:after{content:"";position:absolute;top:-12px;width:21px;height:21px;border:1.5px solid var(--line);border-radius:50%;background:#f0e8d5}
+.cutline:before{left:-11px}.cutline:after{right:-11px}
+.actions{position:relative;width:100%;height:70px;display:flex;align-items:center;justify-content:center;gap:18px;z-index:4}
+button{font-family:"DM Sans",sans-serif;cursor:pointer;transition:transform .18s,box-shadow .18s,background .18s}
+button:focus-visible{outline:3px solid #bd7d86;outline-offset:3px}
+.yes{
+ border:1px solid var(--red2);border-radius:28px;background:var(--red);color:#fff;
+ padding:16px 24px;font-size:12px;font-weight:700;box-shadow:3px 4px 0 #34464b;
+}
+.yes:hover{transform:translateY(-2px);box-shadow:3px 6px 0 #34464b}
+.no{
+ position:relative;border:1.5px solid #718083;border-radius:24px;background:#f7f0df;
+ color:#56666b;padding:11px 17px;font:italic 10px "Playfair Display",serif;
+ box-shadow:1px 2px 0 #bcb5a4;z-index:8;touch-action:manipulation;
+}
+.no.dodging{position:absolute}
+.footstars{margin-top:auto;padding-top:5px;color:var(--red);font-size:11px;letter-spacing:8px;z-index:1}
+.back .arch{height:145px;margin:20px 0 23px}
+.back .heart{font-size:80px;top:28px}
+.back-title{font:600 35px/1.15 "Playfair Display",serif;color:#34464b;margin:0 0 22px;z-index:1}
+.back-title em{color:var(--red);font-weight:500}
+.details{width:100%;border-top:1px solid #d8d0bd;margin-top:0;z-index:1}
+.detail{display:grid;grid-template-columns:75px 1fr;gap:8px;align-items:center;text-align:left;padding:11px 2px;border-bottom:1px solid #d8d0bd}
+.detail b{font-size:9px;letter-spacing:1.5px;color:var(--red)}
+.detail span{font:500 15px "Playfair Display",serif;color:#45545a;overflow-wrap:anywhere}
+.signature{align-self:flex-end;color:var(--red);font:italic 14px "Playfair Display",serif;margin:13px 0 0;z-index:1}
+.back .cutline{margin:48px -22px 23px}
+.share{
+ width:68%;border:0;border-radius:28px;background:#34494e;color:#fff;padding:15px 12px;
+ font-size:11px;font-weight:700;box-shadow:3px 4px 0 var(--red);z-index:1;
+}
+.share:hover{transform:translateY(-2px)}
+.links{display:flex;gap:17px;margin-top:13px;z-index:1}
+.textlink{border:0;background:none;padding:0;color:#526268;font-size:10px;font-weight:600;text-decoration:underline;text-underline-offset:3px}
+.third{transform:rotateY(180deg);opacity:0;pointer-events:none;transition:transform .82s cubic-bezier(.2,.75,.2,1),opacity .35s}
+.book.time-step .front{transform:rotateY(-180deg);opacity:0;pointer-events:none}
+.book.time-step .back{transform:rotateY(-180deg);opacity:0;pointer-events:none}
+.book.time-step .third{transform:rotateY(0deg);opacity:1;pointer-events:auto;z-index:4}
+.time-title{font:600 32px/1.15 "Playfair Display",serif;color:#34464b;margin:0 0 10px;z-index:1}
+.time-subtitle{font-size:12px;color:#7d8278;margin:0 0 20px;z-index:1}
+.time-options{width:100%;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:9px;z-index:1;margin:10px 0 16px}
+.time-option{border:1.5px solid #718083;border-radius:7px;background:#f8f1df;color:#34464b;padding:13px 3px;font:600 17px "Playfair Display",serif;box-shadow:2px 3px 0 #c6bdab;min-width:0}
+.time-option:hover,.time-option.selected{background:#a44956;color:#fff;border-color:#8f3e4c;box-shadow:2px 3px 0 #34464b}
+.time-note{font:italic 13px "Playfair Display",serif;color:#94756e;z-index:1}
+.time-back{border:0;background:none;padding:5px;color:#526268;font-size:10px;text-decoration:underline;text-underline-offset:3px;z-index:1}
+.fourth{transform:rotateY(180deg);opacity:0;pointer-events:none;transition:transform .82s cubic-bezier(.2,.75,.2,1),opacity .35s}
+.book.final-step .front,.book.final-step .back,.book.final-step .third{transform:rotateY(-180deg);opacity:0;pointer-events:none}
+.book.final-step .fourth{transform:rotateY(0deg);opacity:1;pointer-events:auto;z-index:5}
+.confirm-time{width:78%;border:0;border-radius:28px;background:#34494e;color:#fff;padding:14px 12px;font-size:11px;font-weight:700;box-shadow:3px 4px 0 var(--red);z-index:1;margin-top:13px}
+.confirm-time:disabled{opacity:.45;cursor:not-allowed;box-shadow:none}
+.final-message{font:600 29px/1.35 "Playfair Display",serif;color:#34464b;margin:0 0 15px;z-index:1}
+.final-message em{color:var(--red);font-weight:500}
+.final-copy{font:italic 17px/1.8 "Playfair Display",serif;color:#74685e;max-width:280px;margin:8px auto 15px;z-index:1}
+.final-signature{font:italic 16px "Playfair Display",serif;color:var(--red);margin-top:14px;z-index:1}
+.final-heart{font:65px Georgia,serif;color:var(--red);text-shadow:2px 3px 0 #34464b;margin:4px 0 12px;z-index:1}
+.status{min-height:20px;text-align:center;font-size:10px;color:#77786e;margin-top:9px}
+#responseFrame{display:none}
+@keyframes heartBeat{0%,100%{transform:translateX(-50%) rotate(-5deg) scale(1)}50%{transform:translateX(-50%) rotate(-2deg) scale(1.045)}}
+@media(max-height:700px){.book,.panel{min-height:590px}.arch{height:160px;margin:17px 0}.cutline{margin-top:38px}}
+@media(prefers-reduced-motion:reduce){*,*:before,*:after{animation:none!important;transition:none!important}}
+ 
+/* FINAL LAYOUT FIX: keep the invitation and its controls inside one card */
+.book {
+  height: min(700px, max(620px, calc(100svh - 120px)));
+  min-height: 620px;
+}
+
+.panel {
+  position: absolute;
+  inset: 0;
+  height: 100%;
+  min-height: 0;
+  box-sizing: border-box;
+}
+
+.front {
+  position: absolute;
+  inset: 0;
+}
+
+.front .cutline {
+  position: absolute;
+  left: 22px;
+  right: 22px;
+  bottom: 65px;
+  width: auto;
+  margin: 0;
+  flex: none;
+}
+
+.front .actions {
+  position: absolute;
+  left: 22px;
+  right: 22px;
+  bottom: 90px;
+  width: auto;
+  height: 60px;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  flex-shrink: 0;
+}
+
+.front .footstars {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 10px;
+  margin: 0;
+  padding: 0;
+}
+
+@media (max-height: 700px) {
+  .book {
+    height: 620px;
+    min-height: 620px;
+  }
+}
+
+  </style>
+</head>
+<body>
+<main class="shell">
+ <div class="theme-pill">SYSTEM DEFAULT ⌄</div>
+ <div class="book" id="book">
+  <section class="panel front">
+   <div class="micro"><span class="star">✦</span> A LITTLE INVITATION <span class="star">✦</span></div>
+   <div class="arch" aria-hidden="true">
+    <span class="heart">♥</span><span class="doodle d1">✳</span><span class="doodle d2">✧</span><span class="doodle d3">✦</span>
+   </div>
+   <div class="greeting" id="greeting">HEY KHAWLOVA,</div>
+   <h1>BGHIT N3RAD 3LIK</h1>
+   <h2>NKHERJO ANA WYAK</h2>
+   <p class="promise">GHADI YKOUN DAKCHI ZWIN</p>
+   <div class="make">TW7ECHTEK</div>
+   <div class="actions" id="actions">
+    <button class="yes" id="yesButton" type="button">Mmm, Htta ana bghit</button>
+    <button class="no" id="noButton" type="button">Hmm, SIR TN3ESS</button>
+   </div>
+   <div class="cutline"></div>
+   <div class="footstars">✦ ✧ ✦</div>
+  </section>
+
+  <section class="panel back">
+   <div class="micro"><span class="star">✦</span> IT'S A DATE <span class="star">✦</span></div>
+   <div class="arch" aria-hidden="true">
+    <span class="heart">♥</span><span class="doodle d1">✳</span><span class="doodle d2">✧</span><span class="doodle d3">✦</span>
+   </div>
+   <h3 class="back-title">You said <em>yes!</em></h3>
+   <div class="details">
+    <div class="detail"><b>LBLAN</b><span id="planText">Khrija zwina</span></div>
+    <div class="detail"><b>Fo9ach</b><span id="whenText">DIMANCHE 29/11</span></div>
+    <div class="detail"><b>Fine</b><span id="whereText">Blassa Zwina</span></div>
+   </div>
+   <div class="signature" id="signature">— Anas</div>
+   <div class="cutline"></div>
+   <button class="share" id="chooseTimeButton" type="button">Achmen sa3a ?</button>
+   <div class="links">
+    <button class="textlink" id="editButton" type="button">Edit the plan</button>
+    <button class="textlink" id="restartButton" type="button">Start over</button>
+   </div>
+  </section>
+
+  <section class="panel third">
+   <div class="micro"><span class="star">✦</span> ONE LAST LITTLE DETAIL <span class="star">✦</span></div>
+   <div class="arch" aria-hidden="true">
+    <span class="heart">♥</span><span class="doodle d1">✳</span><span class="doodle d2">✧</span><span class="doodle d3">✦</span>
+   </div>
+   <div class="eyebrow">LET'S PICK A TIME</div>
+   <h3 class="time-title">What time works<br>for you?</h3>
+   <p class="time-subtitle">Choose the time that suits you best.</p>
+   <div class="time-options" aria-label="Choose one meeting time">
+    <button class="time-option" type="button" data-time="11:00">11h</button>
+    <button class="time-option" type="button" data-time="12:00">12h</button>
+    <button class="time-option" type="button" data-time="13:00">13h</button>
+    <button class="time-option" type="button" data-time="14:00">14h</button>
+    <button class="time-option" type="button" data-time="15:00">15h</button>
+    <button class="time-option" type="button" data-time="16:00">16h</button>
+    <button class="time-option" type="button" data-time="17:00">17h</button>
+   </div>
+   <div class="time-note">A lovely moment is waiting.</div>
+   <button class="confirm-time" id="confirmTime" type="button" disabled>Confirm the date</button>
+   <div class="cutline"></div>
+   <button class="time-back" id="backToDate" type="button">Back to the date details</button>
+   <div class="footstars">✦ ✧ ✦</div>
+  </section>
+
+  <section class="panel fourth">
+   <div class="micro"><span class="star">✦</span> A LITTLE PROMISE <span class="star">✦</span></div>
+   <div class="arch" aria-hidden="true">
+    <span class="heart">♥</span><span class="doodle d1">✳</span><span class="doodle d2">✧</span><span class="doodle d3">✦</span>
+   </div>
+   <div class="eyebrow">FOR YOU, KHAWLOVA</div>
+   <h3 class="final-message">I love you,<br><em>Khawlova.</em></h3>
+   <p class="final-copy">I'll do my very best to make this date a beautiful moment for us. You deserve care, joy, and a day filled with lovely little things.</p>
+   <div class="final-heart">♥</div>
+   <div class="final-signature">— Anas</div>
+   <div class="cutline"></div>
+   <div class="time-note">See you on Sunday ♥</div>
+   <div class="footstars">✦ ✧ ✦</div>
+  </section>
+ </div>
+ <div class="status" id="status" role="status"></div>
+</main>
+
+<form id="responseForm" method="POST" target="responseFrame" action="https://script.google.com/macros/s/AKfycbxjVqt-QLRMcuad8_2ZQMI9G7zI_92cu6AjhuBion_S-R746M5r3Rs-pH5kk-OEF9P1/exec">
+ <input type="hidden" name="to" id="fTo">
+ <input type="hidden" name="from" id="fFrom">
+ <input type="hidden" name="plan" id="fPlan">
+ <input type="hidden" name="when" id="fWhen">
+ <input type="hidden" name="where" id="fWhere">
+ <input type="hidden" name="answer" id="fAnswer">
+ <input type="hidden" name="chosen_time" id="fChosenTime">
+</form>
+<iframe name="responseFrame" id="responseFrame" title="Response receiver"></iframe>
+
+<script>
+const defaults={to:"Khawlova",from:"Anas",plan:"Khrija zwina",when:"Dimanche 29/11",where:"Blassa Zwina"};
+const qs=new URLSearchParams(location.search);
+const data={};
+for(const k in defaults)data[k]=qs.get(k)||defaults[k];
+
+document.getElementById("greeting").textContent="HEY "+data.to.toUpperCase()+",";
+document.getElementById("planText").textContent=data.plan;
+document.getElementById("whenText").textContent=data.when;
+document.getElementById("whereText").textContent=data.where;
+document.getElementById("signature").textContent="— "+data.from;
+for(const k in data)document.getElementById("f"+k[0].toUpperCase()+k.slice(1)).value=data[k];
+
+let answered=false, dodgeCount=0;
+const book=document.getElementById("book");
+const front=document.querySelector(".front");
+const noBtn=document.getElementById("noButton");
+
+function dodgeNo(ev){
+ if(ev)ev.preventDefault();
+ if(answered)return;
+
+ dodgeCount++;
+
+ // The button moves only within its original action row, so it stays inside the card.
+ noBtn.style.position="relative";
+ noBtn.style.left="auto";
+ noBtn.style.top="auto";
+ noBtn.style.transform = dodgeCount % 2 === 1
+   ? "translateY(-32px)"
+   : "translateY(12px)";
+
+ if(dodgeCount===2)noBtn.textContent="Too slow!";
+ if(dodgeCount===3)noBtn.textContent="Catch me!";
+ if(dodgeCount>=4){
+  answered=true;
+  document.getElementById("fAnswer").value="NO";
+  setTimeout(()=>{
+   noBtn.style.display="none";
+   sendToSheet();
+  },250);
+ }
+}
+noBtn.addEventListener("click",dodgeNo);
+
+function sendToSheet(){
+ const status=document.getElementById("status");
+ const endpoint=document.getElementById("responseForm").action;
+ if(!endpoint.startsWith("https://script.google.com/")){
+  status.textContent="Preview only — connect Google Sheets to receive the response.";
+  return;
+ }
+ status.textContent="Saving your answer…";
+ document.getElementById("responseForm").submit();
+ // Cross-origin form submission cannot expose the server result to this page.
+ setTimeout(()=>{status.textContent="Thank you! Your answer has been submitted.";},1700);
+}
+function submitNo(){
+ if(answered)return;
+ answered=true;
+ document.getElementById("fAnswer").value="NO";
+ book.classList.add("flipped");
+ sendToSheet();
+}
+function startTimeStep(){
+ if(answered)return;
+ document.getElementById("fAnswer").value="YES";
+ book.classList.add("flipped");
+}
+document.getElementById("yesButton").addEventListener("click",startTimeStep);
+document.getElementById("chooseTimeButton").addEventListener("click",()=>{
+ book.classList.add("time-step");
+ document.getElementById("status").textContent="";
+});
+let selectedTime = "";
+document.querySelectorAll(".time-option").forEach(button=>{
+ button.addEventListener("click",()=>{
+  if(answered)return;
+  selectedTime=button.dataset.time;
+  document.getElementById("fChosenTime").value=selectedTime;
+  document.querySelectorAll(".time-option").forEach(b=>b.classList.toggle("selected",b===button));
+  document.getElementById("confirmTime").disabled=false;
+  document.getElementById("status").textContent="Selected: "+selectedTime+".";
+ });
+});
+document.getElementById("confirmTime").addEventListener("click",()=>{
+ if(answered || !selectedTime)return;
+ answered=true;
+ document.getElementById("fAnswer").value="YES";
+ document.getElementById("fChosenTime").value=selectedTime;
+ book.classList.remove("time-step");
+ book.classList.add("final-step");
+ sendToSheet();
+});
+document.getElementById("backToDate").addEventListener("click",()=>{
+ book.classList.remove("time-step");
+ document.getElementById("status").textContent="";
+});
+
+document.getElementById("restartButton").addEventListener("click",()=>{
+ answered=false;dodgeCount=0;selectedTime="";
+ book.classList.remove("time-step","final-step");
+ document.getElementById("fChosenTime").value="";
+ document.getElementById("confirmTime").disabled=true;
+ document.querySelectorAll(".time-option").forEach(b=>b.classList.remove("selected"));
+ noBtn.removeAttribute("style");noBtn.style.display="";noBtn.textContent="Hmm, SIR TN3ESS";
+ book.classList.remove("flipped");
+ document.getElementById("status").textContent="";
+});
+document.getElementById("editButton").addEventListener("click",()=>{
+ const plan=prompt("Edit the plan:",data.plan);if(plan===null)return;
+ const when=prompt("Edit the date:",data.when);if(when===null)return;
+ const where=prompt("Edit the place:",data.where);if(where===null)return;
+ data.plan=plan;data.when=when;data.where=where;
+ document.getElementById("planText").textContent=plan;
+ document.getElementById("whenText").textContent=when;
+ document.getElementById("whereText").textContent=where;
+ document.getElementById("fPlan").value=plan;
+ document.getElementById("fWhen").value=when;
+ document.getElementById("fWhere").value=where;
+});
+</script>
+</body>
+</html>
